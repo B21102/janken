@@ -34,6 +34,7 @@ public class JankenController {
   @GetMapping("/janken")
   public String sample38(Principal prin, ModelMap model) {
     String loginUser = prin.getName();
+    model.addAttribute("name", loginUser);
     this.room.addUser(loginUser);
     model.addAttribute("room", this.room);
 
