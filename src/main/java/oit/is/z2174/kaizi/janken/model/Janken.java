@@ -5,6 +5,7 @@ public class Janken {
   int player;
   int cpu;
   int katimake;
+
   String name;
 
   // p1グーp2チョキp3パー
@@ -53,6 +54,7 @@ public class Janken {
 
   public int getkatimake() {
     return this.katimake;
+
   }
 
   public String getname() {
