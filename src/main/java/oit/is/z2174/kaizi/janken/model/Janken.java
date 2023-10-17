@@ -1,9 +1,11 @@
 package oit.is.z2174.kaizi.janken.model;
 
 public class Janken {
-  int katimake;
+
   int player;
   int cpu;
+  int katimake;
+
   String name;
 
   // p1グーp2チョキp3パー
@@ -51,7 +53,8 @@ public class Janken {
   }
 
   public int getkatimake() {
-    return katimake;
+    return this.katimake;
+
   }
 
   public String getname() {
