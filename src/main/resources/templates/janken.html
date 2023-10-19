@@ -9,27 +9,30 @@
 <body>
   <div><a href="/logout">ログアウト</a></div>
   <h1>JankenGAME!</h1>
-  <div>エントリー</div>
-  <div th:if="${room}">
+
+  <p>Hi <span sec authentication="name"></span></p>
+  <h2>エントリー</h2>
+  <div>
     <ul>
-      <li th:each="user : ${room.users}">[[${user}]]</li>
+      <!-- <li> <a href="/cpu">CPU</a></li>
+      <li><a href="/honda">ほんだ</a></li> -->
+      <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}"> [[${user.userName}]]</a></li>
     </ul>
   </div>
-  <div th:if="${name}">Hi [[${name}]]</div>
-  <div>
-    <a href="/game?n=1">ぐー</a>
-    <a href="/game?n=2">ちょき</a>
-    <a href="/game?n=3">ぱー</a>
-  </div>
 
-  <div th:if="${player}">
-    あなたの手 [[${player}]]
-  </div>
-  <div th:if="${cpu}">
-    相手の手 [[${cpu}]]
-  </div>
-  <div th:if="${hantei}">
-    結果 [[${hantei}]]
+  <h2>試合結果</h2>
+  <!-- <form th:action="@{/step5}" method="post">
+    <input type="text" name="userName" />
+    <input type="submit" value="選択"><input type="reset" value="リセット">
+  </form> -->
+  <div th:each="match:${matches}">
+    <tr>
+      <td>id:[[${match.id}]]</td>
+      <td>user1:[[${match.user1}]]</td>
+      <td>user2:[[${match.user2}]]</td>
+      <td>user1の手:[[${match.user1Hand}]]</td>
+      <td>user2の手:[[${match.user2Hand}]]</td>
+    </tr>
   </div>
 
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JankenGAME!</title>
+</head>
+
+<body>
+  <div><a href="/logout">ログアウト</a></div>
+  <h1>Match</h1>
+
+  <h2><span sec:authentication="name"></span>&ensp;V.S.&ensp;[[${match.userName}]]</h2>
+  <a th:href="@{/fight?n=1(id=${match.id})}">ぐー</a>
+  <a th:href="@{/fight?n=2(id=${match.id})}">ちょき</a>
+  <a th:href="@{/fight?n=3(id=${match.id})}">ぱー</a>
+
+  <div>
+  <div th:if="${player}">
+    あなたの手 [[${player}]]
+  </div>
+  <div th:if="${cpu}">
+    相手の手 [[${cpu}]]
+  </div>
+  <div th:if="${hantei}">
+    結果 [[${hantei}]]
+  </div>
+  </div>
+  <a href="/janken">もどる</a>
+</body>
+
+</html>
