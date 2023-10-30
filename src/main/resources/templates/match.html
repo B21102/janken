@@ -13,7 +13,7 @@
   <h2><span sec:authentication="name"></span>&ensp;V.S.&ensp;[[${match.userName}]]</h2>
 
   <div>
-    <a th:href="@{/wait?user1=${match.user1}&user2=${match.user2}&te='Gu'}">ぐー</a>
+    <a th:href="@{/wait?user1=${match.user1},user2=${match.user2},te='Gu'}">ぐー</a>
     <a th:href="@{/wait?user1=${match.user1},user2=${match.user2},te='Cyoki'}">ちょき</a>
     <a th:href="@{/wait?user1=${match.user1},user2=${match.user2},te='Pa'}">ぱー</a>
   </div>

@@ -81,10 +81,10 @@ public class JankenController {
     return "wait.html";
   }
 
-  // @GetMapping("/step5")
-  // public String step5() {
-  // return "janken.html";
-  // }
+  @GetMapping("/step5")
+  public String step5() {
+    return "janken.html";
+  }
 
   // @PostMapping("/select")
   // public String selsect(@RequestParam String userName, ModelMap model) {
