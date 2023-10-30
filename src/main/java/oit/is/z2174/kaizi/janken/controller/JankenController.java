@@ -59,16 +59,16 @@ public class JankenController {
     return "janken.html";
   }
 
-  @GetMapping("/wait")
-  public String wait(ModelMap model) {
-    ArrayList<MatchInfo> matchinfo = matchinfoMapper.selectAllMatchInfo();
-    model.addAttribute("matchinfo", matchinfo);
-    return "wait.html";
-  }
+  // @GetMapping("/wait")
+  // public String wait(ModelMap model) {
+  // ArrayList<MatchInfo> matchinfo = matchinfoMapper.selectAllMatchInfo();
+  // model.addAttribute("matchinfo", matchinfo);
+  // return "wait.html";
+  // }
 
-  @PostMapping("/wait")
+  @GetMapping("/wait")
   @Transactional
-  public String sample43(@RequestParam int user1, @RequestParam int user2, @RequestParam String te, ModelMap model,
+  public String wait(@RequestParam int user1, @RequestParam int user2, @RequestParam String te, ModelMap model,
       Principal prin) {
     MatchInfo matchinfo = new MatchInfo();
     matchinfo.setUser1(user1);

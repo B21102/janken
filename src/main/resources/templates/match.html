@@ -13,11 +13,11 @@
   <h2><span sec:authentication="name"></span>&ensp;V.S.&ensp;[[${match.userName}]]</h2>
 
   <div>
-    <a th:href="@{/fight?n=3(id=${match.id})}" method="post">ぐー</a>
-    <a th:action="@{/fight?n=3(id=${match.id})}" method="post">ちょき</a>
-    <a th:href="@{/fight?n=3(id=${match.id})}">ぱー</a>
+    <a th:href="@{/wait?user1=${match.user1}&user2=${match.user2}&te='Gu'}">ぐー</a>
+    <a th:href="@{/wait?user1=${match.user1},user2=${match.user2},te='Cyoki'}">ちょき</a>
+    <a th:href="@{/wait?user1=${match.user1},user2=${match.user2},te='Pa'}">ぱー</a>
   </div>
-  <!--
+  <!--/fight?n=3(id=${match.id})
   <div>
   <div th:if="${player}">
     あなたの手 [[${player}]]
