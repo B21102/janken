@@ -1,11 +1,10 @@
 package oit.is.z2174.kaizi.janken.model;
 
-public class Match {
+public class MatchInfo {
   int id;
   int user1;
   int user2;
   String user1Hand;
-  String user2Hand;
   boolean isActive;
 
   // zennbugettartosettar
@@ -25,10 +24,6 @@ public class Match {
     return user1Hand;
   }
 
-  public String getUser2Hand() {
-    return user2Hand;
-  }
-
   public int getId() {
     return id;
   }
@@ -39,10 +34,6 @@ public class Match {
 
   public void setUser2(int user2) {
     this.user2 = user2;
-  }
-
-  public void setUser2Hand(String user2Hand) {
-    this.user2Hand = user2Hand;
   }
 
   public void setUser1Hand(String user1Hand) {

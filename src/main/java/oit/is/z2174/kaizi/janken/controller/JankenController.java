@@ -18,7 +18,9 @@ import oit.is.z2174.kaizi.janken.model.Entry;
 import oit.is.z2174.kaizi.janken.model.User;
 import oit.is.z2174.kaizi.janken.model.UserMapper;
 import oit.is.z2174.kaizi.janken.model.Match;
+import oit.is.z2174.kaizi.janken.model.MatchInfo;
 import oit.is.z2174.kaizi.janken.model.MatchMapper;
+import oit.is.z2174.kaizi.janken.model.MatchInfoMapper;
 
 @Controller
 public class JankenController {
@@ -36,13 +38,16 @@ public class JankenController {
   @Autowired
   MatchMapper matchMapper;
 
-  // @PostMapping("/janken")
-  // public String janken(@RequestParam String name, ModelMap model) {
+  @Autowired
+  MatchInfoMapper matchinfoMapper;
 
-  //   model.addAttribute("name", name);
-  //   room.addUser(name);
-  //   return "janken.html";
-  // }
+  @PostMapping("/janken")
+  public String janken(@RequestParam String name, ModelMap model) {
+
+    model.addAttribute("name", name);
+    // room.addUser(name);
+    return "janken.html";
+  }
 
   @GetMapping("/janken")
   public String entryUser(ModelMap model) {
@@ -54,6 +59,28 @@ public class JankenController {
     return "janken.html";
   }
 
+  @GetMapping("/wait")
+  public String wait(ModelMap model) {
+    ArrayList<MatchInfo> matchinfo = matchinfoMapper.selectAllMatchInfo();
+    model.addAttribute("matchinfo", matchinfo);
+    return "wait.html";
+  }
+
+  @PostMapping("/wait")
+  @Transactional
+  public String sample43(@RequestParam int user1, @RequestParam int user2, @RequestParam String te, ModelMap model,
+      Principal prin) {
+    MatchInfo matchinfo = new MatchInfo();
+    matchinfo.setUser1(user1);
+    matchinfo.setUser2(user2);
+    matchinfo.setUser1Hand(te);
+    matchinfo.setisActive(true);
+    matchinfoMapper.insertMatchInfo(matchinfo);
+    model.addAttribute("matchinfo", matchinfo);
+    // System.out.println("ID:" + chamber3.getId());
+    return "wait.html";
+  }
+
   // @GetMapping("/step5")
   // public String step5() {
   // return "janken.html";
@@ -61,9 +88,9 @@ public class JankenController {
 
   // @PostMapping("/select")
   // public String selsect(@RequestParam String userName, ModelMap model) {
-  //   ArrayList<User> users5 = userMapper.selectAllByUserName(userName);
-  //   model.addAttribute("users5", users5);
-  //   return "janken.html";
+  // ArrayList<User> users5 = userMapper.selectAllByUserName(userName);
+  // model.addAttribute("users5", users5);
+  // return "janken.html";
   // }
 
   @GetMapping("/match")
@@ -78,6 +105,11 @@ public class JankenController {
     String loginyouser = prin.getName();
     User user = userMapper.selectByUserName(loginyouser);
     Match matches = new Match();
+
+    ArrayList<MatchInfo> matchinfo = matchinfoMapper.selectAllMatchInfo();
+
+    model.addAttribute("matchinfo", matchinfo);
+
     matches.setUser1(user.getId());
     matches.setUser2(id);
     matches.setUser2Hand("Gu");
@@ -120,6 +152,6 @@ public class JankenController {
     model.addAttribute("match", match);
     matchMapper.insertMatch(matches);
 
-    return "match.html";
+    return "wait.html";
   }
 }

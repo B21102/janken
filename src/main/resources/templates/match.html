@@ -11,10 +11,16 @@
   <h1>Match</h1>
 
   <h2><span sec:authentication="name"></span>&ensp;V.S.&ensp;[[${match.userName}]]</h2>
-  <a th:href="@{/fight?n=1(id=${match.id})}">ぐー</a>
-  <a th:href="@{/fight?n=2(id=${match.id})}">ちょき</a>
-  <a th:href="@{/fight?n=3(id=${match.id})}">ぱー</a>
 
+  <!-- <a th:href="/wait">ぐー</a>
+  <a th:href="/wait">ちょき</a>
+  <a th:href="/wait">ぱー</a> -->
+  <div>
+    <a th:href="@{/wait?user1=1?user2=2?te='Gu'}" method="post">ぐー</a>
+    <a th:action="@{/wait?user1=1?user2=2?te='Gu'}" method="post">ちょき</a>
+    <a th:href="@{/fight?n=3(id=${match.id})}">ぱー</a>
+  </div>
+  <!--
   <div>
   <div th:if="${player}">
     あなたの手 [[${player}]]
@@ -25,7 +31,7 @@
   <div th:if="${hantei}">
     結果 [[${hantei}]]
   </div>
-  </div>
+  </div>-->
   <a href="/janken">もどる</a>
 </body>
 

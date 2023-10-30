@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JankenGAME!</title>
+</head>
+
+<body>
+  <h1>相手の手を待ってます</h1>
+
+  <p>Hi <span sec authentication="name">[[$name]]</span>
+
+  <div th:each="match:${match}">
+    <h2>結果</h2>
+    <tr>
+      <td>Match:id [[${match.id}]]</td>
+      <td>user1:[[${match.user1}]]</td>
+      <td>user2:[[${match.user2}]]</td>
+      <td>user1Hand:[[${match.user1Hand}]]</td>
+      <td>user2Hand:[[${match.user2Hand}]]</td>
+    </tr>
+  </div>
+
+</body>
+
+</html>
